@@ -1,0 +1,6 @@
+<!--index.wxml-->
+<navigation-bar title="Weixin" back="{{false}}" color="black" background="#FFF"></navigation-bar>
+
+<view>
+  <button>测试按钮</button>
+</view>

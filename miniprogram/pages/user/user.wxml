@@ -1,0 +1,51 @@
+<!--pages/user/user.wxml-->
+<view class="user">
+
+  <view class="personal-info">
+    <block wx:if="{{islogin}}" >
+      <view class="personal-info_avatar">
+        <image src="https://img.zcool.cn/community/011d125bada9dda801213deae4ed54.jpg?x-oss-process=image/auto-orient,1/resize,m_lfit,w_1280,limit_1/sharpen,100" mode="aspectFit" />
+      </view>
+      <view class="personal-info_textBox">
+        <view class="personal-info_nickname">
+          昵称
+        </view>
+        <view class="personal-info_id">
+          个人id：eehgeiej11
+        </view>
+      </view>
+    </block>
+
+    <block wx:else>
+      <view class="personal-info_avatar">
+        <image src="https://img.zcool.cn/community/011d125bada9dda801213deae4ed54.jpg?x-oss-process=image/auto-orient,1/resize,m_lfit,w_1280,limit_1/sharpen,100" mode="aspectFit" />
+      </view>
+      <view class="personal-info_textBox">
+        <view class="personal-info_tip">
+          您还未登陆哦,请登陆
+        </view>
+        <view>
+          <button class="personal-info_btnForLogin" bind:tap="toLogin" >
+            <image src="https://api.iconify.design/ion:accessibility.svg" mode="" style="height:24rpx;width: 24rpx;" />
+            点击登陆
+          </button>
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <view class="list">
+    <block wx:for="{{listData}}" wx:key="index">
+      <view class="list-item">
+        <image src="{{item.icon}}" mode="aspectFit" />
+        <view class="text">
+          {{item.text}}
+        </view>
+        <view class="arrow">
+          <image src="https://api.iconify.design/weui:arrow-outlined.svg" />
+        </view>
+      </view>
+    </block>
+  </view>
+
+</view>

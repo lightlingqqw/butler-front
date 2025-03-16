@@ -1,0 +1,7 @@
+<!-- components/loading/loading.wxml -->
+<view class="loading-mask" wx:if="{{visible}}" catchtouchmove="preventTouchMove" catchtap="preventTouch">
+  <view class="loading-content">
+    <view class="loading-spinner"></view>
+    <view class="loading-text">{{text}}</view>
+  </view>
+</view>

@@ -1,0 +1,39 @@
+<!--pages/login/login.wxml-->
+<loading visible="{{isLoading}}" text="加载中..."></loading>
+
+<view class="login">
+
+
+  <view class="login-introduction">
+    <view class="login-introduction_title">
+      重启人生
+    </view>
+    <view class="login-introduction_slogan">
+      五十天挑战，发现不一样的自己
+    </view>
+    <view class="login-introduction_img">
+      <image src="http://localhost:3000/download/image/32f411fa5b2153226835d517cc716562.png" mode="aspectFit"/>
+    </view>
+  </view>
+
+  <view class="login-operate">
+    <view>
+      <button bind:tap="onTestClick">微信登陆</button>
+    </view>
+
+    <view>
+      <button>账号密码登陆</button>
+    </view>
+
+    <view class="login-operate_privacy">
+      <radio-group bindchange="handleAgreeChange">
+        <label style="display: flex;align-items: center;">
+          <radio value="agree" checked="{{isAgreed}}" /> 阅读并同意
+          <navigator url="/pages/privacy/privacy" class="link">《隐私协议》</navigator>
+        </label>
+      </radio-group>
+    </view>
+
+  </view>
+
+</view>
