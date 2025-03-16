@@ -1,4 +1,4 @@
-// components/loading/loading.js
+// components/loading/loading.ts
 Component({
   properties: {
     visible: {

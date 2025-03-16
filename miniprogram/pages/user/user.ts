@@ -1,4 +1,6 @@
 // pages/user/user.ts
+const app = getApp();
+
 
 type PageData = {
   isLogin:boolean;
@@ -23,7 +25,7 @@ Page<PageData,FunctionType>({
    * 页面的初始数据
    */
   data: {
-    isLogin:false,
+    isLogin:app.globalData.isLogin,
     personalInfo:{
       avatar:'',
       nickname:'',
@@ -63,7 +65,9 @@ Page<PageData,FunctionType>({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
+    const isLogin = wx.getStorageSync('isLogin');
+    console.log("app.globalData.isLogin:",isLogin)
+    this.setData({isLogin})
   },
 
   /**

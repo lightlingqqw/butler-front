@@ -2,11 +2,14 @@
 
 import { login } from "../../interface/login";
 
+const app = getApp();
+
 type PageData = {
   isLoading:boolean;
 }
 type PageFunc = {
-  login:()=>void
+  login:()=>void;
+  onTestClick:()=>void;
 }
 
 
@@ -27,11 +30,17 @@ Page<PageData,PageFunc>({
       success(res) {
         if (res.code) {
           // 将 code 发送到服务端
-          login({code:res.code}).then((result)=>{
-             console.log(result);
-              wx.setStorageSync('token', result.data);
+          login({code:res.code}).then((response)=>{
+             console.log(response);
+             if(response.result === 1){
+              wx.setStorageSync('token', response.data);
+              wx.setStorageSync('isLogin', true);
+              wx.navigateBack();
+             }
+              
           }).finally(()=>{
             THIS.setData({isLoading:false});/*  */
+            
           });
 
 

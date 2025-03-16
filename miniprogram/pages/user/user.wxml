@@ -2,7 +2,7 @@
 <view class="user">
 
   <view class="personal-info">
-    <block wx:if="{{islogin}}" >
+    <block wx:if="{{isLogin}}" >
       <view class="personal-info_avatar">
         <image src="https://img.zcool.cn/community/011d125bada9dda801213deae4ed54.jpg?x-oss-process=image/auto-orient,1/resize,m_lfit,w_1280,limit_1/sharpen,100" mode="aspectFit" />
       </view>

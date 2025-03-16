@@ -2,5 +2,5 @@
 <navigation-bar title="Weixin" back="{{false}}" color="black" background="#FFF"></navigation-bar>
 
 <view>
-  <button>测试按钮</button>
+  <date-picker initialDate="2025-3-16" bind:dateChange="onDateChange"></date-picker>
 </view>

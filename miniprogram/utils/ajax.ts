@@ -1,3 +1,6 @@
+import { ResResult } from "../interface/type";
+const app = getApp();
+
 enum HttpMethod {
   GET = 'GET',
   POST = 'POST'
@@ -19,13 +22,22 @@ type responseType = {
   message:string;
 }
 
+type rawResponseType = {
+  accelerateType:string;
+  cookies: Array<any>;
+  data:ResResult;
+  header:any;
+  statusCode:number;
+  errMsg:string;
+}
+
 class HttpClient {
 
   private defaultConfig: configType;
   private config:configType;
   private interceptors:{
-    request:Array<any>;
-    response:Array<any>;
+    request:Array<(config:configType)=>configType>;
+    response:Array<(response:rawResponseType)=>rawResponseType>;
   };
   private requestQueue:Map<any,any>;
 
@@ -50,7 +62,47 @@ class HttpClient {
 
     // 请求队列（用于取消请求）
     this.requestQueue = new Map();
+
+
+    const defaultRequestInterceptors = (config:configType)=>{
+      const token = 'Bearer ' + wx.getStorageSync('token');
+      config.headers = {
+        ...config.headers,
+        'Authorization': token
+      }
+      return config;
+    }
+
+    this.interceptors.request.push(defaultRequestInterceptors);
+
+    const defaultResponseInterceptors = (res:rawResponseType)=>{
+      if(res.statusCode === 401){
+        wx.setStorageSync('isLogin', false);
+        wx.showModal({
+          title:'登陆提示',
+          content:'您还未登陆，是否跳转到登陆页？',
+          success(res) {
+            if (res.confirm) {
+              console.log('用户点击确定');
+              wx.navigateTo({
+                url: '/pages/login/login'
+              });
+
+            } else if (res.cancel) {
+              console.log('用户点击取消');
+            }
+          }
+        })
+      }
+      console.log('res的值：',res);
+      
+      return res;
+    }
+
+    this.interceptors.response.push(defaultResponseInterceptors);
+
   }
+
 
   // 发送请求
   request(url:string,options:optionsType) {
@@ -89,14 +141,14 @@ class HttpClient {
         timeout: this.config.timeout,
         success: (response) => {
           // 执行响应拦截器
-          let responseData = response.data;
+          let responseData = response;
           for (const interceptor of this.interceptors.response) {
             responseData = interceptor(responseData);
           }
 
           // 请求成功
           if (response.statusCode >= 200 && response.statusCode < 300) {
-            resolve(responseData);
+            resolve(responseData.data);
           } else {
             // 请求失败
             reject(new Error('请求失败'));
@@ -137,11 +189,11 @@ class HttpClient {
   }
 
   // GET 请求
-  get(url:string,options:Omit<optionsType,'body'|'method'>) {
+  get(url:string,options?:Omit<optionsType,'body'|'method'>) {
     return this.request(`${url}`,
       {
         method:HttpMethod.GET, 
-        headers:options.headers
+        headers:options?.headers
       }
     );
   }

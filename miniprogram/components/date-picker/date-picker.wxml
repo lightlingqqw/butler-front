@@ -1,0 +1,7 @@
+<!-- components/date-picker/date-picker.wxml -->
+<scroll-view class="date-picker" scroll-x>
+  <view class="date-grid" wx:for="{{dates}}" wx:key="date" bindtap="onDateClick" data-date="{{item.date}}">
+    <view class="weekday">{{item.weekday}}</view>
+    <view class="{{selectedDate ===  item.date ? 'day-selected ' : 'day' }}">{{item.day}}</view>
+  </view>
+</scroll-view>

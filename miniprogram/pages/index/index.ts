@@ -1,5 +1,7 @@
-// pages/project/project.ts
+import HttpClient from "../../utils/ajax";
 
+// pages/project/project.ts
+const http = new HttpClient();
 
 Page({
 
@@ -10,8 +12,15 @@ Page({
 
   },
 
+  onDateChange(value){
+    console.log(value.detail);
+  },
 
-
+  test(){
+    http.get('http://localhost:3000/users').then((res)=>{
+      console.log('点击测试返回的值：',res);
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载
