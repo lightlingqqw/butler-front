@@ -12,11 +12,13 @@ type PageData = {
   listData:Array<{
     icon:string;
     text:string;
+    path:string;
   }>;
 }
 
 type FunctionType = {
-  toLogin:()=>void
+  toLogin:()=>void,
+  handleItemClick:(e:any)=>void
 }
 
 Page<PageData,FunctionType>({
@@ -34,11 +36,30 @@ Page<PageData,FunctionType>({
     listData:[
       {
         icon:'https://tse3-mm.cn.bing.net/th/id/OIP-C.o-dqT5Z2SopUGkVn0TsN9wHaHa?rs=1&pid=ImgDetMain',
-        text:'收藏'
+        text:'收藏',
+        path:'pages/addProgramme/addProgramme'
+      },
+      {
+        icon:'https://tse3-mm.cn.bing.net/th/id/OIP-C.o-dqT5Z2SopUGkVn0TsN9wHaHa?rs=1&pid=ImgDetMain',
+        text:'添加挑战',
+        path:'/pages/addProgramme/addProgramme'
       },
     ]
   },
 
+  handleItemClick: function (e) {
+    
+    const index = e.currentTarget.dataset.index;
+    const item = this.data.listData[index];
+    console.log('触发了点击事件',index,item,item.path);
+    wx.navigateTo({
+      url:item.path,
+      fail: (err) => {
+        console.error('导航失败', err);
+      }
+    });
+
+  },
 
   toLogin(){
     wx.navigateTo({

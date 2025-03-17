@@ -1,0 +1,51 @@
+<!--pages/statistics/statistics.wxml-->
+<view class="statistics">
+  <view class="statistics-info">
+    <view>
+      <image class="statistics-info_img" src="{{info.avatar}}" mode="" />
+    </view>
+    <view class="statistics-info_days">
+      <view>打卡天数</view>
+      <view>{{info.days}}</view>
+      <view>{{info.ratio}}</view>
+    </view>
+    <view class="statistics-info_ranking">
+      <view>目前排名</view>
+      <view>{{info.ranking}}</view>
+      <view></view>
+    </view>
+  </view>
+
+  <view class="statistics-list">
+    <view class="statistics-list_header">
+      <view>{{listHeader.myName}}</view>
+      <view>{{listHeader.oppositeName}}</view>
+    </view>
+    <view class="statistics-list_content">
+      <block wx:for="{{listContent}}" wx:key="index">
+        <view class="statistics-list_content_item">
+          <view class="statistics-list_content_item_box">
+            <view class="statistics-list_content_item_myCount">{{item.myCount}}</view>
+            <view class="statistics-list_content_item_time">07:15</view>
+            
+          </view>
+          <view class="statistics-list_content_item_itemName">
+            {{item.itemName}}
+            <view class="statistics-list_content_item_bar">
+              <view class="statistics-list_content_item_bar_my"></view>
+              <view class="statistics-list_content_item_bar_opposite"></view>
+            </view>
+          </view>
+          <view class="statistics-list_content_item_oppositeBox">
+            <view class="statistics-list_content_item_oppositeCount">{{item.oppositeCount}}</view>
+            <view class="statistics-list_content_item_time">07:15</view>
+          </view>
+        </view>
+      </block>
+    </view>
+    <view class="statistics-list_bottom">
+      <view>{{listBottom.myRatio}}</view>
+      <view>{{listBottom.oppositeRatio}}</view>
+    </view>
+  </view>
+</view>

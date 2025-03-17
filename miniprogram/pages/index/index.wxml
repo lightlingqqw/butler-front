@@ -3,4 +3,13 @@
 
 <view>
   <date-picker initialDate="2025-3-16" bind:dateChange="onDateChange"></date-picker>
+  <view>
+    
+  </view>
+
+  <view>
+  
+  </view>
+
+
 </view>

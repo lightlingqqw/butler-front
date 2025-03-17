@@ -4,7 +4,9 @@
     "pages/logs/logs",
     "pages/project/project",
     "pages/user/user",
-    "pages/login/login"
+    "pages/login/login",
+    "pages/statistics/statistics",
+    "pages/addProgramme/addProgramme"
   ],
   "window": {
     "navigationBarTextStyle": "black",
@@ -27,6 +29,12 @@
       {
         "pagePath": "pages/index/index",
         "text": "首页",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home-active.png"
+      },
+      {
+        "pagePath": "pages/statistics/statistics",
+        "text": "统计",
         "iconPath": "images/home.png",
         "selectedIconPath": "images/home-active.png"
       },

@@ -1,0 +1,59 @@
+<!--pages/addProgramme/addProgramme.wxml-->
+<view class="addProgramme">
+  <view class="addProgramme-one">
+    <view class="addProgramme-one_label" >
+      任务名字:
+    </view>
+    <view class="addProgramme-one_input">
+      <input 
+        placeholder="请输入内容" 
+        bindinput="handleInput" 
+        value="{{inputValue}}"
+      />
+    </view>
+  </view>
+  <view class="addProgramme-two">
+    <view class="addProgramme-two_label">
+      请挑选图标:
+    </view>
+    <view class="addProgramme-two_icon">
+    </view>
+  </view>
+  <view class="addProgramme-three">
+    <view>
+      <view class="addProgramme-three_label">打卡频次</view>
+      <view>
+        重复、每天、每周
+      </view>
+    </view>
+    <view>
+      周一、周二、周三、周四、周五、周六、周日
+    </view>
+
+  </view>
+  <view class="addProgramme-four">
+    <view class="addProgramme-four_label">
+      打卡限制
+    </view>
+    <view>
+      选择打卡时间
+    </view>
+  </view>
+  <view class="addProgramme-five">
+    <view class="addProgramme-four_label">
+      备注：
+    </view>
+    <view class="addProgramme-five_textarea">
+      <textarea 
+        placeholder="请输入多行内容" 
+        bindinput="handleTextareaInput" 
+        value="{{textareaValue}}"
+      />
+    </view>
+  </view>
+  <view class="addProgramme-six">
+    <button>保存</button>
+    
+    <button bind:tap="submit">确认并发给好友</button>
+  </view>
+</view>
