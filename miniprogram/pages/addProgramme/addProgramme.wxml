@@ -55,5 +55,6 @@
     <button>保存</button>
     
     <button bind:tap="submit">确认并发给好友</button>
+    
   </view>
 </view>

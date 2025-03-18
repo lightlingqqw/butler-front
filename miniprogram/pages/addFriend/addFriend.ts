@@ -1,31 +1,26 @@
-import { accept, createTag } from "../../interface/addProgramme";
+import { add } from "../../interface/addFriend"
+import { accept } from "../../interface/addProgramme";
 
-// pages/addProgramme/addProgramme.ts
+// pages/addFriend/addFriend.ts
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    inputValue: ''
+
   },
 
-
-  handleInput: function (e:any) {
-    this.setData({
-      inputValue: e.detail.value
-    });
-  },
-
-  submit(){
-    createTag({tagName:this.data.inputValue,programme_id:'da735989-13e6-41ef-ac3a-92dc1be51e71',deadline:'2025-3-19'})
-    .then((res)=>{
+  addFriend(){
+    add({toUserId:'11'}).then((res)=>{
       console.log(res);
     })
   },
-
-
-
+  accepttest(){
+    accept().then((res)=>{
+      console.log(res);
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

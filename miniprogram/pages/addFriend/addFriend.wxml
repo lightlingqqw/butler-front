@@ -1,0 +1,6 @@
+<!--pages/addFriend/addFriend.wxml-->
+<view class="addFriend">
+11111
+  <button bind:tap="addFriend">添加朋友</button>
+  <button bind:tap="accepttest">接受请求</button>
+</view>

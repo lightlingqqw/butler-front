@@ -6,7 +6,8 @@
     "pages/user/user",
     "pages/login/login",
     "pages/statistics/statistics",
-    "pages/addProgramme/addProgramme"
+    "pages/addProgramme/addProgramme",
+    "pages/addFriend/addFriend"
   ],
   "window": {
     "navigationBarTextStyle": "black",

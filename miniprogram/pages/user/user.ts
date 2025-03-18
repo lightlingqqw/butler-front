@@ -44,6 +44,11 @@ Page<PageData,FunctionType>({
         text:'添加挑战',
         path:'/pages/addProgramme/addProgramme'
       },
+      {
+        icon:'https://tse3-mm.cn.bing.net/th/id/OIP-C.o-dqT5Z2SopUGkVn0TsN9wHaHa?rs=1&pid=ImgDetMain',
+        text:'添加朋友',
+        path:'/pages/addFriend/addFriend'
+      },
     ]
   },
 
